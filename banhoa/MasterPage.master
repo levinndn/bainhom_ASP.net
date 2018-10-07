@@ -1,0 +1,136 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            width: 100%;
+        }
+
+        .auto-style3 {
+            width: 10%;
+        }
+
+        </style>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website bán hoa</title>
+    <meta name="description" content="Blueprint: Horizontal Slide Out Menu" />
+    <meta name="keywords" content="horizontal, slide out, menu, navigation, responsive, javascript, images, grid" />
+    <meta name="author" content="Codrops" />
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="menuCode/css/default.css" />
+    <link rel="stylesheet" type="text/css" href="menuCode/css/component.css" />
+    <script src="menuCode/js/modernizr.custom.js"></script>
+    <script type="text/javascript" src="menuCode/js/testdangki.js"></script>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <table class="auto-style1">
+            <tr>
+                <td colspan="3">
+                    <asp:Image ID="Image1" runat="server" Height="92px" ImageUrl="~/img/header.jpg" Width="100%" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <div class="container">
+                        <header class="clearfix">
+                            <span>Website <span class="bp-icon bp-icon-about" data-content="Đây là website bán hoa trực tuyến qua mạng"></span></span>
+                            <h1>Cửa Hàng Hoa</h1>
+                            <nav>
+                                <a href="DangKi.aspx" class="bp-icon bp-icon-archive" data-info="Đăng Kí"><span>Đăng Kí</span></a>
+                            </nav>
+                        </header>
+                        <div class="main">
+                            <nav class="cbp-hsmenu-wrapper" id="cbp-hsmenu-wrapper">
+                                <div class="cbp-hsinner">
+                                    <ul class="cbp-hsmenu">
+                                        <li>
+                                            <a href="#">Danh Mục Hoa</a>
+                                            <ul class="cbp-hssubmenu">
+                                                <li style="float: left; padding-left: 10%;">
+                                                    <asp:DataList ID="DataList2" runat="server" RepeatColumns="5" CellSpacing="5">
+                                                        <ItemTemplate>
+                                                            <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl='<%# "~/img/"+Eval("hinh") %>' Height="150px" Width="150px" CommandArgument='<%# Eval("maloai") %>' OnClick="ImageButton1_Click" />
+                                                            <br />
+                                                            <asp:LinkButton ID="LinkButton3" runat="server" ForeColor="#000066" Text='<%# Eval("tenloai") %>' CommandArgument='<%# Eval("maloai") %>' OnClick="LinkButton3_Click"></asp:LinkButton>
+                                                        </ItemTemplate>
+                                                    </asp:DataList>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#">Our Mission</a>
+                                            <ul class="cbp-hssubmenu cbp-hssub-rows">
+                                                <u><i>
+                                                    <h2>Our Mission</h2>
+                                                </i></u>
+                                                <br />
+                                                To exceed our customers’ expectations with innovative and bespoke Assurance, Testing,
+                                            <br />
+                                                Inspection and Certification services for their operations and supply chain. Globally. 24/7.<br />
+                                                <br />
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Contact</a>
+                                            <ul class="cbp-hssubmenu">
+                                                <img src="img/contact.JPG">
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style3" style="width: 20%;">
+                    <asp:DataList ID="DataList1" runat="server" ForeColor="#33CC33" CellSpacing="20" CellPadding="10">
+                        <ItemTemplate>
+                            <asp:LinkButton ID="LinkButton1" runat="server" Text='<%# Eval("tenloai") %>' CommandArgument='<%# Eval("maloai") %>' OnClick="LinkButton1_Click" BackColor="#99CC00" ForeColor="#006600" Font-Bold="True" Font-Size="Large" BorderWidth="10px" Font-Italic="True" Height="100%" Width="100%" ></asp:LinkButton>
+                            <br />
+                        </ItemTemplate>
+                    </asp:DataList>
+                </td>
+                <td style="width: 70%;">
+                    <div>
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </td>
+
+                <td style="width: 10%;">
+                    <asp:Label ID="Label1" runat="server"></asp:Label>
+                    <asp:Login ID="Login1" runat="server" BackColor="#E3EAEB" BorderColor="#E6E2D8" BorderPadding="4" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#333333" TextLayout="TextOnTop" OnAuthenticate="Login1_Authenticate">
+                        <InstructionTextStyle Font-Italic="True" ForeColor="Black" />
+                        <LoginButtonStyle BackColor="White" BorderColor="#C5BBAF" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#1C5E55" />
+                        <TextBoxStyle Font-Size="0.8em" />
+                        <TitleTextStyle BackColor="#1C5E55" Font-Bold="True" Font-Size="0.9em" ForeColor="White" />
+                    </asp:Login>
+                    <br />
+                    <asp:LinkButton ID="LinkButton2" runat="server" ForeColor="#CC9900" OnClick="LinkButton2_Click">Đăng Kí</asp:LinkButton>
+                &nbsp;&nbsp;&nbsp;
+                    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Logout" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <asp:Image ID="Image2" runat="server" ImageUrl="~/img/footer.jpg" Width="100%" Height="123px" />
+                </td>
+            </tr>
+        </table>
+    </form>
+    <script src="menuCode/js/cbpHorizontalSlideOutMenu.min.js"></script>
+    <script>
+        var menu = new cbpHorizontalSlideOutMenu(document.getElementById('cbp-hsmenu-wrapper'));
+    </script>
+    <audio style="float:right;" src="img/That Girl.mp3" controls="controls" loop="loop" autoplay="autoplay" preload="auto"></audio>
+</body>
+</html>
