@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -17,12 +18,22 @@ public partial class MasterPage : System.Web.UI.MasterPage
         this.DataList1.DataBind();
         this.DataList2.DataSource = dt;
         this.DataList2.DataBind();
-
+        if (Request.Cookies["tendangnhap"] != null)
+            this.Label1.Text = Request.Cookies["tendangnhap"].Value;
+        else this.Label1.Text = "chưa đăng nhập!";
 
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
-        Request.Cookies["tendangnhap"].Value = null;
+        if (Request.Cookies["tendangnhap"] != null)
+        {
+            
+            HttpCookie myCookie = new HttpCookie("tendangnhap");
+            myCookie.Expires = DateTime.Now.AddDays(-1d);
+            Response.Cookies.Add(myCookie);
+            Session.Clear();
+            Server.Transfer("Default.aspx");
+        }
     }
 
     protected void LinkButton1_Click(object sender, EventArgs e)
@@ -53,7 +64,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
         {
             this.Login1.FailureText = "Tên Đăng Nhập hoặc Mật Khẩu không đúng";
         }
-
+        
     }
 
     protected void ImageButton1_Click(object sender, ImageClickEventArgs e)

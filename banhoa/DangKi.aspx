@@ -62,6 +62,10 @@
         .auto-style28 {
             color: #CCCC00;
         }
+        .auto-style29 {
+            font-size: x-large;
+            color: #FF9900;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
@@ -100,7 +104,7 @@
         <tr>
             <td class="auto-style19">Username:</td>
             <td class="auto-style20">
-                <asp:TextBox ID="TextBox3" runat="server" ControlToValidate="TextBox3" CssClass="auto-style22" placeholder="levinn"></asp:TextBox> *
+                <asp:TextBox ID="TextBox3" runat="server" ControlToValidate="TextBox3" CssClass="auto-style22" placeholder="levinn" value=""></asp:TextBox> *
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ControlToValidate="TextBox3" runat="server" CssClass="auto-style23" ErrorMessage="Không được để trống"></asp:RequiredFieldValidator>
             </td>
         </tr>
@@ -138,5 +142,9 @@
     &nbsp;&nbsp;&nbsp;
     <asp:Button ID="Button1" runat="server" Text="Đăng kí" OnClick="Button1_Click" />
     &nbsp;&nbsp;&nbsp;&nbsp;
+        
+<strong><em>
+    <asp:Label ID="Label2" runat="server" CssClass="auto-style29"></asp:Label>
+    </em></strong>
         
 </asp:Content>

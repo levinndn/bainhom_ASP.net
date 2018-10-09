@@ -10,7 +10,7 @@ public class Data : System.Web.UI.Page
 
     public Data()
     {
-        string strcn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename='" + Server.MapPath("App_Data/Database.mdf") + "';Integrated Security=True";
+        string strcn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\web\nhomASP\BanHoa\banhoa\banhoa\App_Data\Database.mdf;Integrated Security=True";
         cn = new SqlConnection(strcn);
     }
 
